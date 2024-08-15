@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- SweetAlert2 library -->
     <title>GIFTED | TIKTOK DOWNLOADER</title>
     <style>
         .container {
@@ -24,22 +24,44 @@
 <body class="bg-gray-900 text-white h-screen flex flex-col justify-center items-center">
     <div class="w-full max-w-lg">
         <div class="container">
-            <input type="text" id="videoUrl" placeholder="Enter TikTok video URL..." class="w-full bg-gray-800 rounded-lg py-2 px-4 mb-4">
+            <div class="flex justify-center mb-4">
+                <img src="https://telegra.ph/file/c2a4d8d65722553da4c89.jpg" alt="Logo" class="h-12">
+            </div>
+            <h1 class="text-2xl font-bold mb-4">Gifted TikTok Video Downloader</h1>
+            <p class="text-center mb-6">Download Videos from TikTok Without Watermark</p>
+            <input type="text" id="videoUrl" placeholder="Insert TikTok link here" class="w-full bg-gray-800 rounded-lg py-2 px-4 mb-4">
+            <div class="flex justify-center mb-4">
+                <button onclick="pasteUrl()" class="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-lg">Paste</button>
+            </div>
             <div class="flex justify-center">
-                <button onclick="downloadVideo()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg mb-4">Download</button>
+                <button onclick="downloadVideo()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">Download</button>
             </div>
         </div>
     </div>
 
     <script>
+    function pasteUrl() {
+        navigator.clipboard.readText().then(text => {
+            document.getElementById("videoUrl").value = text;
+        }).catch(err => {
+            console.error('Failed to read clipboard contents: ', err);
+        });
+    }
+
     async function downloadVideo() {
         let videoUrl = document.getElementById("videoUrl").value;
 
         if (!videoUrl) {
-            alert("Please enter a TikTok video URL.");
+            Swal.fire({
+                title: 'Error!',
+                text: 'Please enter a TikTok video URL.',
+                icon: 'error',
+                confirmButtonText: 'Okay'
+            });
             return;
         }
 
+        // Show a SweetAlert processing dialog
         Swal.fire({
             title: 'Processing, Be Patient',
             text: 'Please wait while we fetch the video download URL...',
@@ -47,7 +69,7 @@
             allowOutsideClick: false,
             showConfirmButton: false,
             willOpen: () => {
-                Swal.showLoading();
+                Swal.showLoading(); // Show loading spinner
             }
         });
 
@@ -56,10 +78,16 @@
             const data = await response.json();
 
             if (data.success) {
-                Swal.close();
-                alert("Video Download URL obtained from Gifted API");
-                alert("Starting Download Process");
-                window.open(data.url, '_blank');
+                const resultUrl = data.url;
+
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Video Download URL obtained from Gifted API. Starting Download Process.',
+                    icon: 'success',
+                    confirmButtonText: 'Download'
+                }).then(() => {
+                    window.open(resultUrl, '_blank');
+                });
             } else {
                 Swal.fire({
                     title: 'Error!',
@@ -70,6 +98,7 @@
             }
         } catch (error) {
             console.error("Error fetching video download URL:", error);
+
             Swal.fire({
                 title: 'Error!',
                 text: 'An error occurred while fetching the video download URL.',
