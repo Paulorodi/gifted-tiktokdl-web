@@ -2,16 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GIFTED | TIKTOK DOWNLOADER</title>
-    <meta name="description" content="Download Videos from TikTok for Free Without Watermark">
-    <meta property="og:title" content="GIFTED | TIKTOK DOWNLOADER">
-    <meta property="og:description" content="Download Videos from TikTok for Free Without Watermark">
-    <meta property="og:image" content="https://telegra.ph/file/c2a4d8d65722553da4c89.jpg">
-    <meta property="og:type" content="website">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- SweetAlert2 library -->
+    <title>GIFTED | TIKTOK DOWNLOADER</title>
     <style>
         .container {
             width: 100%;
@@ -30,16 +25,16 @@
     <div class="w-full max-w-lg">
         <div class="container">
             <div class="flex justify-center mb-4">
-                <img src="https://telegra.ph/file/c2a4d8d65722553da4c89.jpg" alt="GiftedTechApi" class="h-12">
+                <img src="https://your-logo-url.com/logo.png" alt="Logo" class="h-12">
             </div>
-            <h1 class="text-2xl font-bold mb-4">Gifted TikTok Video Downloader</h1>
-            <p class="text-center mb-6" style="color: green;">Download TikTok Videos for Free Without Watermark</p>
+            <h1 class="text-2xl font-bold mb-4">TikTok Video Downloader</h1>
+            <p class="text-center mb-6" style="color: green;">Download Videos from TikTok</p>
             <div class="relative mb-4">
-                <input type="text" id="videoUrl" placeholder="Insert TikTok Video link here" class="w-full bg-gray-800 rounded-lg py-2 px-4">
+                <input type="text" id="videoUrl" placeholder="Insert TikTok link here" class="w-full bg-gray-800 rounded-lg py-2 px-4">
                 <button onclick="pasteUrl()" class="absolute right-2 top-2 bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-lg">Paste</button>
             </div>
             <div class="flex justify-center">
-                <button onclick="downloadVideo()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">NEXT</button>
+                <button onclick="downloadVideo()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">Download</button>
             </div>
         </div>
     </div>
@@ -87,11 +82,11 @@
 
                 Swal.fire({
                     title: 'Success!',
-                    text: 'Video Download URL obtained from Gifted APi. Start Download Below.',
+                    text: 'Video Download URL obtained from Gifted API. Starting Download Process.',
                     icon: 'success',
                     confirmButtonText: 'Download'
                 }).then(() => {
-                    window.open(resultUrl);
+                    window.open(resultUrl, '_blank');
                 });
             } else {
                 Swal.fire({
