@@ -24,9 +24,9 @@ app.get('/api/download', async (req, res) => {
         const data = response.data;
 
         if (data.status === 200 && data.success) {
-            res.json({ success: true, url: data.url });
+            res.json({ success: true, creator: 'GiftedTech', url: data.url });
         } else {
-            res.status(500).json({ success: false, message: 'Failed to obtain the video download URL' });
+            res.status(500).json({ success: false, creator: 'GiftedTech', message: 'Failed to obtain the video download URL' });
         }
     } catch (error) {
         console.error("Error fetching video download URL:", error);
