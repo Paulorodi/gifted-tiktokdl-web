@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- SweetAlert2 library -->
@@ -25,16 +25,16 @@
     <div class="w-full max-w-lg">
         <div class="container">
             <div class="flex justify-center mb-4">
-                <img src="https://telegra.ph/file/c2a4d8d65722553da4c89.jpg" alt="Logo" class="h-12">
+                <img src="https://telegra.ph/file/c2a4d8d65722553da4c89.jpg" alt="GiftedTechApi" class="h-12">
             </div>
             <h1 class="text-2xl font-bold mb-4">Gifted TikTok Video Downloader</h1>
-            <p class="text-center mb-6">Download Videos from TikTok Without Watermark</p>
-            <input type="text" id="videoUrl" placeholder="Insert TikTok link here" class="w-full bg-gray-800 rounded-lg py-2 px-4 mb-4">
-            <div class="flex justify-center mb-4">
-                <button onclick="pasteUrl()" class="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-lg">Paste</button>
+            <p class="text-center mb-6" style="color: green;">Download TikTok Videos for Free Without Watermark</p>
+            <div class="relative mb-4">
+                <input type="text" id="videoUrl" placeholder="Insert TikTok Video link here" class="w-full bg-gray-800 rounded-lg py-2 px-4">
+                <button onclick="pasteUrl()" class="absolute right-2 top-2 bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-lg">Clip-Paste</button>
             </div>
             <div class="flex justify-center">
-                <button onclick="downloadVideo()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">Download</button>
+                <button onclick="downloadVideo()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">NEXT</button>
             </div>
         </div>
     </div>
@@ -82,7 +82,7 @@
 
                 Swal.fire({
                     title: 'Success!',
-                    text: 'Video Download URL obtained from Gifted API. Starting Download Process.',
+                    text: 'Video Download URL obtained from Gifted APi. Starting Download Below.',
                     icon: 'success',
                     confirmButtonText: 'Download'
                 }).then(() => {
