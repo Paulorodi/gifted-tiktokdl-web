@@ -5,8 +5,10 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Serve the static HTML file
-app.use(express.static(path.join(__dirname)));
+// Serve the static HTML file for the root route
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 // Endpoint to handle TikTok video download requests
 app.get('/api/download', async (req, res) => {
